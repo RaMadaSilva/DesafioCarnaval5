@@ -32,7 +32,7 @@ public class Conversor
         int valorMilhar = (int)(valor / 1000);
         int restoMilhar = (int)(valor % 1000);
 
-        int valorCentena = 0; 
+        int valorCentena = 0;
         int restoCentena = 0;
 
         int valorDesena = 0;
@@ -41,7 +41,7 @@ public class Conversor
         //Trabalhando com Milhar
         if (valorMilhar >= 0 && valorMilhar <= 10)
         {
-            if (restoMilhar%100 == 0)
+            if (restoMilhar % 100 == 0)
             {
                 foreach (var item in milhar.Keys)
                 {
@@ -55,12 +55,12 @@ public class Conversor
                 valorCentena = (int)(sobra / 100);
                 restoCentena = (int)(sobra % 100);
 
-                if (restoCentena%10 == 0)
+                if (restoCentena % 10 == 0)
                 {
                     foreach (var item in centena.Keys)
                     {
                         if (valorCentena * 100 == item)
-                            extenso = sb.Append($"{centena[item]} e").ToString();
+                            return sb.Append($"{centena[item]}").ToString();
                     }
                 }
                 else
@@ -74,19 +74,18 @@ public class Conversor
                         foreach (var item in dezena.Keys)
                         {
                             if (sobra == item)
-                                extenso = sb.Append($"{dezena[item]} e").ToString();
+                                valUnite = sb.Append($"{dezena[item]}").ToString();
                         }
                     }
-                    else if (restoDezena == 0)
+                    else if (sobra % 10 == 0)
                     {
                         foreach (var item in centena.Keys)
                         {
                             if (valorDesena * 10 == item)
                             {
-                                extenso = sb.Append($"{centena[item]} e").ToString();
-                                break; 
+                                return sb.Append($"{centena[item]} e").ToString();
                             }
-                               
+
                         }
                     }
                     else
@@ -102,12 +101,13 @@ public class Conversor
                     }
                 }
             }
-
-            
         }
+        var mil = (valorMilhar == 0) ? string.Empty : milhar[valorMilhar * 1000];
+        var cent = (valorMilhar == 0) ? string.Empty : centena[valorCentena * 100] + " e ";
+        var dezn = (valorMilhar == 0) ? string.Empty :valorDesena ==1 ? string.Empty : dezena[valorDesena * 10] + " e ";
+        var unit = (valorMilhar == 0) ? string.Empty : valUnite;
+        return sb.Append($"{mil} {cent}  {dezn} {unit}").ToString().Trim();
 
-        extenso = sb.Append($"{milhar[valorMilhar*1000]}  {centena[valorCentena*100]} e {dezena[valorDesena*10]} e {valUnite}").ToString();
-        return extenso; 
     }
 }
 
