@@ -81,9 +81,9 @@ public class Conversor
                             {
                                 if (sobra == item)
                                 {
-                                    var mil = valorMilhar == 0 ? string.Empty : (quartaOrdem[valorMilhar * 1000]);
-                                    var cent = (valorCentena == 0) ? string.Empty : (terceiraOrdem[valorCentena * 100]);
-                                    return sb.Append($"{mil} e {cent} e {segundaOrdem[item]}").ToString();
+                                    var mil = valorMilhar == 0 ? string.Empty : (quartaOrdem[valorMilhar * 1000]) + "e";
+                                    var cent = (valorCentena == 0) ? string.Empty : (terceiraOrdem[valorCentena * 100]) + "e";
+                                    return sb.Append($"{mil} {cent} {segundaOrdem[item]}").ToString();
                                 }
                             }
                         }

@@ -23,8 +23,8 @@ class Program
                 Console.WriteLine("Valor Estremamente Alto, ainda estamos a analizar se podemos implementar ou não");
                 return;
             }
-            int reais = (int)Math.Floor(entrada);
-            int centavos = (int)(entrada - reais)*100; 
+            int reais = (int)(Math.Floor(entrada));
+            int centavos = (int)((entrada - reais)*100); 
 
             string reaisExtenso = Conversor.ConverterPorExtencao(reais);
             string centimoExtenso = Conversor.ConverterPorExtencao(centavos);
