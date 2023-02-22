@@ -65,7 +65,6 @@ public class Conversor
                             var cent = (valorCentena == 0) ? string.Empty : (terceiraOrdem[valorCentena * 100]);
                             return sb.Append($"{mil} e {cent}").ToString();
                         }
-
                     }
                 }
                 else
@@ -86,7 +85,6 @@ public class Conversor
                                     var cent = (valorCentena == 0) ? string.Empty : (terceiraOrdem[valorCentena * 100]);
                                     return sb.Append($"{mil} e {cent} e {segundaOrdem[item]}").ToString();
                                 }
-
                             }
                         }
                         else
@@ -102,7 +100,6 @@ public class Conversor
                                     var cent = (valorCentena == 0) ? string.Empty : terceiraOrdem[valorCentena * 100] + " e ";
                                     var dezn = (valorDesena == 0) ? string.Empty : segundaOrdem[valorDesena * 10] + " e ";
                                     return sb.Append($"{mil} {cent}  {dezn} {valUnite}").ToString().Trim();
-
                                 }
                             }
                         }

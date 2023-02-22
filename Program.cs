@@ -1,4 +1,6 @@
-﻿namespace DesafioCarnaval5;
+﻿using System.Globalization;
+
+namespace DesafioCarnaval5;
 class Program
 {
     #region comentario desafio
@@ -11,20 +13,30 @@ class Program
 
     static void Main(string[] args)
     {
-        Console.Write("- valor final da compra: ");
-        double entrada =Convert.ToDouble(Console.ReadLine());
-
-        if(entrada> 10000)
+        try
         {
-            Console.WriteLine("Valor Estremamente Alto, ainda estamos a analizar se podemos implementar ou não");
-            return; 
-        }
-        var valores = entrada.ToString().Split(",");
-        int.TryParse(valores[0], out int reais);
-        int.TryParse(valores[1], out int centimos);
+            Console.Write("- valor final da compra: ", CultureInfo.InvariantCulture);
+            double entrada = Convert.ToDouble(Console.ReadLine());
 
-        string reaisExtenso = Conversor.ConverterPorExtencao(reais);
-        string centimoExtenso = Conversor.ConverterPorExtencao(centimos); 
-        Console.WriteLine($"{reaisExtenso} reis e {centimoExtenso} centavos".ToUpper());
+            if (entrada > 10000)
+            {
+                Console.WriteLine("Valor Estremamente Alto, ainda estamos a analizar se podemos implementar ou não");
+                return;
+            }
+            int reais = (int)Math.Floor(entrada);
+            int centavos = (int)(entrada - reais)*100; 
+
+            string reaisExtenso = Conversor.ConverterPorExtencao(reais);
+            string centimoExtenso = Conversor.ConverterPorExtencao(centavos);
+            Console.WriteLine($"{reaisExtenso} reis e {centimoExtenso} centavos".ToUpper());
+        }
+        catch(FormatException fe)
+        {
+            Console.WriteLine("erro de formato: " + fe.Message);
+        }catch(Exception ex)
+        {
+            Console.WriteLine("falha interna: "+ ex.Message);
+        }
+        
     }
 }
