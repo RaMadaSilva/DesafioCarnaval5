@@ -18,7 +18,7 @@ class Program
             Console.Write("- valor final da compra: ", CultureInfo.InvariantCulture);
             double entrada = Convert.ToDouble(Console.ReadLine());
 
-            if (entrada > 10000)
+            if (entrada > 10999.99)
             {
                 Console.WriteLine("Valor Estremamente Alto, ainda estamos a analizar se podemos implementar ou não");
                 return;
