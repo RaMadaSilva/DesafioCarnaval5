@@ -12,8 +12,12 @@ class Program
     static void Main(string[] args)
     {
         Console.Write("- valor final da compra: ");
-        double.TryParse(Console.ReadLine(), out double valor);
-        string valorExtenso = Conversor.ConverterPorExtencao(valor);
-        Console.WriteLine(valorExtenso.ToUpper());
+        var valores = Console.ReadLine().Split(',');
+        int.TryParse(valores[0], out int reais);
+        int.TryParse(valores[1], out int centimos);
+
+        string reaisExtenso = Conversor.ConverterPorExtencao(reais);
+        string centimoExtenso = Conversor.ConverterPorExtencao(centimos); 
+        Console.WriteLine($"{reaisExtenso} reis e {centimoExtenso} centavos".ToUpper());
     }
 }
